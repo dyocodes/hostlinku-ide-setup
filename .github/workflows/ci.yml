@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate JSON config templates
+        run: |
+          for f in configs/*.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f', 'utf8'))"
+            echo "OK: $f"
+          done
+      - name: Validate Codex TOML template
+        run: python -c "import tomllib, pathlib; tomllib.loads(pathlib.Path('configs/codex-config.toml').read_text(encoding='utf-8')); print('OK: configs/codex-config.toml')"
+      - name: Check Node.js verifier syntax
+        run: node --check scripts/verify-ide-endpoint.mjs
