@@ -1,0 +1,9 @@
+model = "gpt-5-5"
+model_provider = "hostlinku"
+model_reasoning_effort = "medium"
+
+[model_providers.hostlinku]
+name = "Hostlinku"
+base_url = "https://api.hostlinku.com/v1"
+env_key = "HOSTLINKU_API_KEY"
+wire_api = "responses"
