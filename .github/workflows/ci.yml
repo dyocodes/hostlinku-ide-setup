@@ -26,6 +26,7 @@ jobs:
             echo "OK: $f"
           done
       - name: Validate Codex TOML template
-        run: python -c "import tomllib, pathlib; tomllib.loads(pathlib.Path('configs/codex-config.toml').read_text(encoding='utf-8')); print('OK: configs/codex-config.toml')"
+        run: |
+          python -c "import tomllib, pathlib; tomllib.loads(pathlib.Path('configs/codex-config.toml').read_text(encoding='utf-8')); print('OK: configs/codex-config.toml')"
       - name: Check Node.js verifier syntax
         run: node --check scripts/verify-ide-endpoint.mjs
