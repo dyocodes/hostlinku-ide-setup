@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "title": "Claude Sonnet 4.6 (Hostlinku)",
+      "provider": "openai",
+      "model": "claude-sonnet-4-6",
+      "apiBase": "https://api.hostlinku.com/v1",
+      "apiKey": "sk-your-api-key",
+      "roles": ["chat", "edit", "apply"],
+      "contextLength": 1000000,
+      "completionOptions": {
+        "maxTokens": 32000
+      }
+    },
+    {
+      "title": "GPT-5.5 (Hostlinku)",
+      "provider": "openai",
+      "model": "gpt-5-5",
+      "apiBase": "https://api.hostlinku.com/v1",
+      "apiKey": "sk-your-api-key",
+      "roles": ["chat", "edit", "apply"]
+    }
+  ]
+}
